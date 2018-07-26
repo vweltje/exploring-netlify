@@ -16,7 +16,7 @@ An opinionated starter project for creating lightning-fast websites with [Gatsby
 
 ## Get going
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Jinksi/gatsbro&stack=cms)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/thriveweb/gatsbro&stack=cms)
 
 1.  Hit the **Deploy to Netlify** button. This will:
 
