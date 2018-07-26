@@ -28,6 +28,6 @@ section2: |-
   vel est ut proin dis auctor. Suscipit scelerisque orci magna interdum vel
   bibendum duis netus a consectetur dui magnis ac aliquet sem posuere tincidunt
   vestibulum.
-testImage: /images/uploads/mark-chang-74-3.jpg
+testImage: /images/uploads/paint2.jpg
 ---
 
