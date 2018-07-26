@@ -2,7 +2,7 @@
 template: HomePage
 slug: ''
 title: Hello World!
-featuredImage: /images/uploads/smoke1.jpg
+featuredImage: /images/uploads/paint1.jpg
 subtitle: This is the home page subtitle test
 meta:
   title: ''
