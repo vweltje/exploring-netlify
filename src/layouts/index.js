@@ -27,7 +27,7 @@ export default ({ children, data }) => {
         }
       />
 
-      <GithubCorner url="https://github.com/Jinksi/gatsbro" />
+      <GithubCorner url="https://github.com/thriveweb/whitesmoke" />
 
       <Nav />
 
