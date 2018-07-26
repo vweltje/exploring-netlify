@@ -2,7 +2,7 @@
 template: AboutPage
 slug: about
 title: About page title
-featuredImage: /images/uploads/tim-marshall-155597.jpg
+featuredImage: /images/uploads/smoke3.jpg
 subtitle: Test subtitle
 section1: >-
   ## Lorem Ipsum
