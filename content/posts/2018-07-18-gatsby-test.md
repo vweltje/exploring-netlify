@@ -1,6 +1,7 @@
 ---
 template: SinglePost
 title: Gatsby Test
+subTitle: lllaa
 status: Published
 date: '2018-07-18'
 featuredImage: /images/uploads/nitish-meena-37745.jpg
