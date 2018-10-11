@@ -363,3 +363,10 @@ collections: # A list of collections the CMS should be able to edit
           default: '',
           format: 'DD MM YYYY',
         }
+      - {
+          label: 'Start time',
+          name: 'start',
+          widget: 'datetime',
+          default: '',
+          format: 'YYYY-MM-DD HH:mm',
+        }
