@@ -356,3 +356,10 @@ collections: # A list of collections the CMS should be able to edit
           default: true,
         }
       - { label: subTitle, name: subTitle, widget: string }
+      - {
+          label: 'publish date',
+          name: 'publish-date',
+          widget: 'date',
+          default: '',
+          format: 'DD MM YYYY',
+        }
