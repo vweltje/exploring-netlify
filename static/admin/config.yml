@@ -349,4 +349,10 @@ collections: # A list of collections the CMS should be able to edit
           default: singleService,
         }
       - { label: Title, name: title, widget: string }
+      - {
+          label: show subtitle,
+          name: showsubtitle,
+          widget: 'boolean',
+          default: true,
+        }
       - { label: subTitle, name: subTitle, widget: string }
