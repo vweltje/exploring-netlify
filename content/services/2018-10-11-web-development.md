@@ -1,6 +1,6 @@
 ---
 template: SinglePost
-title: web development
+title: Web Development
 subTitle: JavaScript
 ---
 
