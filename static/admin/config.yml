@@ -376,3 +376,12 @@ collections: # A list of collections the CMS should be able to edit
           widget: 'file',
           default: '/uploads/general-manual.pdf',
         }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
+      - { label: 'Featured Image', name: 'thumbnail', widget: 'image' }
+      - label: 'slider'
+        name: 'slider'
+        widget: 'list'
+        fields:
+          - label: 'Image'
+            name: 'sliderImage'
+            widget: 'image'
