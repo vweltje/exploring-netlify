@@ -10,7 +10,7 @@ export const ServicesIndexTemplate = ({
   title,
   subtitle,
   featuredImage,
-  posts = [],
+  services = [],
   postCategories = [],
   contentType
 }) => {
@@ -18,8 +18,7 @@ export const ServicesIndexTemplate = ({
   const byCategory = post =>
     post.categories &&
     post.categories.filter(cat => cat.category === title).length
-  const filteredPosts = isCategory ? posts.filter(byCategory) : posts
-
+  const filteredPosts = isCategory ? services.filter(byCategory) : services
   return (
     <main className="Services">
       <Helmet>
@@ -40,10 +39,10 @@ export const ServicesIndexTemplate = ({
         </section>
       )}
 
-      {!!posts.length && (
+      {!!services.length && (
         <section className="section">
           <div className="container">
-            <PostSection posts={filteredPosts} />
+            <PostSection services={filteredPosts} />
           </div>
         </section>
       )}
@@ -53,21 +52,15 @@ export const ServicesIndexTemplate = ({
 
 // Export Default ServicesIndex for front-end
 const ServicesIndex = ({ data }) => {
-  console.log(data)
   return (
     <ServicesIndexTemplate
       {...data.page}
       {...data.page.fields}
       {...data.page.frontmatter}
-      posts={data.posts.edges.map(post => ({
-        ...post.node,
-        ...post.node.frontmatter,
-        ...post.node.fields
-      }))}
-      postCategories={data.postCategories.edges.map(post => ({
-        ...post.node,
-        ...post.node.frontmatter,
-        ...post.node.fields
+      services={data.services.edges.map(service => ({
+        ...service.node,
+        ...service.node.frontmatter,
+        ...service.node.fields
       }))}
     />
   )
@@ -86,7 +79,7 @@ export const pageQuery = graphql`
         title
         template
         subtitle
-        thumbnail {
+        featuredImage {
           ...FluidImage
         }
       }
