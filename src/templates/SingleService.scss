@@ -1,0 +1,16 @@
+.SingleService {
+  .SingleService--Slider {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    figure {
+      position: relative;
+      width: 50%;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}

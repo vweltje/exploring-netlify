@@ -7,7 +7,7 @@ import { ChevronLeft } from 'react-feather'
 
 import Content from '../components/Content'
 import Image from '../components/Image'
-import './SingleService.css'
+import './SingleService.scss'
 
 export const SingleServiceTemplate = ({
   title,
@@ -33,7 +33,14 @@ export const SingleServiceTemplate = ({
         <ChevronLeft /> BACK
       </Link>
       <div className="SingleService--Content relative">
+        {title && (
+          <h1 className="SingleService--Title" itemProp="title">
+            {title}
+          </h1>
+        )}
+
         <div className="SingleService--Meta">
+          Publish date:&nbsp;
           {publishDate && (
             <time
               className="SingleService--Meta--Date"
@@ -43,13 +50,35 @@ export const SingleServiceTemplate = ({
               {_format(publishDate, 'MMMM Do, YYYY')}
             </time>
           )}
+          <br /> Start time:&nbsp;
+          {start && (
+            <time
+              className="SingleService--Meta--Date"
+              itemProp="dateCreated pubdate datePublished"
+              date={start}
+            >
+              {_format(start, 'YYYY-MM-DD HH:mm')}
+            </time>
+          )}
         </div>
 
-        {title && (
-          <h1 className="SingleService--Title" itemProp="title">
-            {title}
-          </h1>
-        )}
+        <div className="singleService--Content">
+          {thumbnail && <Image src={thumbnail} alt={thumbnail.publicURL} />}
+          Download:{' '}
+          <Link to={manual_pdf.publicURL}>{manual_pdf.publicURL}</Link>
+          {slider && (
+            <div className="SingleService--Slider">
+              {slider.map((item, intex) => {
+                const image = item.sliderImage.publicURL
+                return (
+                  <figure>
+                    <Image src={image} alt={image} />
+                  </figure>
+                )
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   </article>
