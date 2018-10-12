@@ -9,6 +9,11 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import GithubCorner from '../components/GithubCorner'
 
+// export default ({ children, data }) => {
+//   console.log(data)
+//   return 'test'
+// }
+
 export default ({ children, data }) => {
   const { siteTitle, siteUrl, socialMediaCard, headerScripts } =
     data.settingsYaml || {}

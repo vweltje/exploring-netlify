@@ -182,6 +182,46 @@ collections: # A list of collections the CMS should be able to edit
                   required: false,
                 }
 
+        - file: 'content/pages/services.md'
+          label: 'Services Page'
+          name: 'services-page'
+          fields:
+            - {
+                label: Template,
+                name: template,
+                widget: hidden,
+                default: ServicesIndex,
+              }
+            - { label: Slug, name: slug, widget: hidden, default: 'services' }
+            - { label: Title, name: title, widget: string }
+            - { label: Featured Image, name: featuredImage, widget: image }
+            - { label: Subtitle, name: subtitle, widget: markdown }
+            - label: 'Meta'
+              required: false
+              name: 'meta'
+              widget: 'object'
+              fields:
+                - { label: Title, name: title, widget: string, required: false }
+                - {
+                    label: Description,
+                    name: description,
+                    widget: text,
+                    required: false,
+                    pattern: ['.{,300}', 'Must not exceed 300 characters'],
+                  }
+                - {
+                    label: Canonical Link,
+                    name: canonicalLink,
+                    widget: string,
+                    required: false,
+                  }
+                - {
+                    label: Noindex,
+                    name: noindex,
+                    widget: boolean,
+                    required: false,
+                  }
+
   - name: infoPages
     label: Info Page
     editor:
