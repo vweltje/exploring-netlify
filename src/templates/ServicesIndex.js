@@ -52,23 +52,26 @@ export const ServicesIndexTemplate = ({
 }
 
 // Export Default ServicesIndex for front-end
-const ServicesIndex = ({ data }) => (
-  <ServicesIndexTemplate
-    {...data.page}
-    {...data.page.fields}
-    {...data.page.frontmatter}
-    posts={data.posts.edges.map(post => ({
-      ...post.node,
-      ...post.node.frontmatter,
-      ...post.node.fields
-    }))}
-    postCategories={data.postCategories.edges.map(post => ({
-      ...post.node,
-      ...post.node.frontmatter,
-      ...post.node.fields
-    }))}
-  />
-)
+const ServicesIndex = ({ data }) => {
+  console.log(data)
+  return (
+    <ServicesIndexTemplate
+      {...data.page}
+      {...data.page.fields}
+      {...data.page.frontmatter}
+      posts={data.posts.edges.map(post => ({
+        ...post.node,
+        ...post.node.frontmatter,
+        ...post.node.fields
+      }))}
+      postCategories={data.postCategories.edges.map(post => ({
+        ...post.node,
+        ...post.node.frontmatter,
+        ...post.node.fields
+      }))}
+    />
+  )
+}
 
 export default ServicesIndex
 
@@ -79,52 +82,30 @@ export const pageQuery = graphql`
   ## query name must be unique to this file
   query ServicesIndex($id: String!) {
     page: markdownRemark(id: { eq: $id }) {
-      fields {
-        contentType
-      }
       frontmatter {
         title
         template
         subtitle
-        featuredImage {
+        thumbnail {
           ...FluidImage
         }
       }
     }
 
-    posts: allMarkdownRemark(
-      filter: { fields: { contentType: { eq: "posts" } } }
+    services: allMarkdownRemark(
+      filter: { fields: { contentType: { eq: "services" } } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {
         node {
-          excerpt
           fields {
             slug
           }
           frontmatter {
             title
-            categories {
-              category
-            }
-            featuredImage {
+            thumbnail {
               ...SmallImage
             }
-          }
-        }
-      }
-    }
-    postCategories: allMarkdownRemark(
-      filter: { fields: { contentType: { eq: "postCategories" } } }
-      sort: { order: ASC, fields: [frontmatter___title] }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
           }
         }
       }
