@@ -351,14 +351,14 @@ collections: # A list of collections the CMS should be able to edit
       - { label: Title, name: title, widget: string }
       - {
           label: show subtitle,
-          name: showsubtitle,
+          name: showsubTitle,
           widget: 'boolean',
           default: true,
         }
       - { label: subTitle, name: subTitle, widget: string }
       - {
           label: 'publish date',
-          name: 'publish-date',
+          name: 'publishDate',
           widget: 'date',
           default: '',
           format: 'DD MM YYYY',
@@ -385,3 +385,4 @@ collections: # A list of collections the CMS should be able to edit
           - label: 'Image'
             name: 'sliderImage'
             widget: 'image'
+            default: ''

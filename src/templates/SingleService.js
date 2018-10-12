@@ -11,12 +11,13 @@ import './SingleService.css'
 
 export const SingleServiceTemplate = ({
   title,
-  date,
-  featuredImage,
-  body,
-  nextPostURL,
-  prevPostURL,
-  categories = []
+  showSubtitle,
+  subtitle,
+  publishDate,
+  start,
+  manual_pdf,
+  thumbnail,
+  slider = []
 }) => (
   <article
     className="SingleService section light"
@@ -27,44 +28,20 @@ export const SingleServiceTemplate = ({
       <title>{title}</title>
     </Helmet>
 
-    {featuredImage && (
-      <Image
-        background
-        className="SingleService--BackgroundImage"
-        src={featuredImage}
-        alt={title}
-      />
-    )}
-
     <div className="container skinny">
       <Link className="SingleService--BackButton" to="/blog/">
         <ChevronLeft /> BACK
       </Link>
       <div className="SingleService--Content relative">
         <div className="SingleService--Meta">
-          {date && (
+          {publishDate && (
             <time
               className="SingleService--Meta--Date"
               itemProp="dateCreated pubdate datePublished"
-              date={date}
+              date={publishDate}
             >
-              {_format(date, 'MMMM Do, YYYY')}
+              {_format(publishDate, 'MMMM Do, YYYY')}
             </time>
-          )}
-          {categories && (
-            <Fragment>
-              <span>|</span>
-              {categories.map((cat, index) => (
-                <span
-                  key={cat.category}
-                  className="SingleService--Meta--Category"
-                >
-                  {cat.category}
-                  {/* Add a comma on all but last category */}
-                  {index !== categories.length - 1 ? ',' : ''}
-                </span>
-              ))}
-            </Fragment>
           )}
         </div>
 
@@ -73,29 +50,6 @@ export const SingleServiceTemplate = ({
             {title}
           </h1>
         )}
-
-        <div className="SingleService--InnerContent">
-          <Content source={body} />
-        </div>
-
-        <div className="SingleService--Pagination">
-          {prevPostURL && (
-            <Link
-              className="SingleService--Pagination--Link prev"
-              to={prevPostURL}
-            >
-              Previous Post
-            </Link>
-          )}
-          {nextPostURL && (
-            <Link
-              className="SingleService--Pagination--Link next"
-              to={nextPostURL}
-            >
-              Next Post
-            </Link>
-          )}
-        </div>
       </div>
     </div>
   </article>
@@ -103,15 +57,13 @@ export const SingleServiceTemplate = ({
 
 // Export Default SingleService for front-end
 const SingleService = ({ data, pathContext }) => {
-  const { post, allPosts } = data
-  const thisEdge = allPosts.edges.find(edge => edge.node.id === post.id)
+  const { service } = data
+  console.log(service)
   return (
     <SingleServiceTemplate
-      {...post}
-      {...post.frontmatter}
-      body={post.html}
-      nextPostURL={_get(thisEdge, 'next.fields.slug')}
-      prevPostURL={_get(thisEdge, 'previous.fields.slug')}
+      {...service}
+      {...service.frontmatter}
+      body={service.html}
     />
   )
 }
@@ -124,46 +76,25 @@ export const pageQuery = graphql`
   ## $id is processed via gatsby-node.js
   ## query name must be unique to this file
   query SingleService($id: String!) {
-    post: markdownRemark(id: { eq: $id }) {
+    service: markdownRemark(id: { eq: $id }) {
       html
       id
       frontmatter {
         title
         template
-        subtitle
-        date
-        categories {
-          category
-        }
-        featuredImage {
+        subTitle
+        publishDate
+        start
+        thumbnail {
           ...FluidImage
         }
-      }
-    }
-
-    allPosts: allMarkdownRemark(
-      filter: { fields: { contentType: { eq: "posts" } } }
-      sort: { order: DESC, fields: [frontmatter___date] }
-    ) {
-      edges {
-        node {
-          id
-        }
-        next {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
+        slider {
+          sliderImage {
+            ...FluidImage
           }
         }
-        previous {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
+        manual_pdf {
+          ...FluidImage
         }
       }
     }
