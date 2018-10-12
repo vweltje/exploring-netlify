@@ -18,76 +18,78 @@ export const SingleServiceTemplate = ({
   manual_pdf,
   thumbnail,
   slider = []
-}) => (
-  <article
-    className="SingleService section light"
-    itemScope
-    itemType="http://schema.org/BlogPosting"
-  >
-    <Helmet>
-      <title>{title}</title>
-    </Helmet>
+}) => {
+  const link = manual_pdf.publicURL || manual_pdf
+  return (
+    <article
+      className="SingleService section light"
+      itemScope
+      itemType="http://schema.org/BlogPosting"
+    >
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
 
-    <div className="container skinny">
-      <Link className="SingleService--BackButton" to="/blog/">
-        <ChevronLeft /> BACK
-      </Link>
-      <div className="SingleService--Content relative">
-        {title && (
-          <h1 className="SingleService--Title" itemProp="title">
-            {title}
-          </h1>
-        )}
+      <div className="container skinny">
+        <Link className="SingleService--BackButton" to="/blog/">
+          <ChevronLeft /> BACK
+        </Link>
+        <div className="SingleService--Content relative">
+          {title && (
+            <h1 className="SingleService--Title" itemProp="title">
+              {title}
+            </h1>
+          )}
 
-        <div className="SingleService--Meta">
-          Publish date:&nbsp;
-          {publishDate && (
-            <time
-              className="SingleService--Meta--Date"
-              itemProp="dateCreated pubdate datePublished"
-              date={publishDate}
-            >
-              {_format(publishDate, 'MMMM Do, YYYY')}
-            </time>
-          )}
-          <br /> Start time:&nbsp;
-          {start && (
-            <time
-              className="SingleService--Meta--Date"
-              itemProp="dateCreated pubdate datePublished"
-              date={start}
-            >
-              {_format(start, 'YYYY-MM-DD HH:mm')}
-            </time>
-          )}
-        </div>
+          <div className="SingleService--Meta">
+            Publish date:&nbsp;
+            {publishDate && (
+              <time
+                className="SingleService--Meta--Date"
+                itemProp="dateCreated pubdate datePublished"
+                date={publishDate}
+              >
+                {_format(publishDate, 'MMMM Do, YYYY')}
+              </time>
+            )}
+            <br /> Start time:&nbsp;
+            {start && (
+              <time
+                className="SingleService--Meta--Date"
+                itemProp="dateCreated pubdate datePublished"
+                date={start}
+              >
+                {_format(start, 'YYYY-MM-DD HH:mm')}
+              </time>
+            )}
+          </div>
 
-        <div className="singleService--Content">
-          {thumbnail && <Image src={thumbnail} alt={thumbnail.publicURL} />}
-          Download:{' '}
-          <Link to={manual_pdf.publicURL}>{manual_pdf.publicURL}</Link>
-          {slider && (
-            <div className="SingleService--Slider">
-              {slider.map((item, intex) => {
-                const image = item.sliderImage.publicURL
-                return (
-                  <figure>
-                    <Image src={image} alt={image} />
-                  </figure>
-                )
-              })}
-            </div>
-          )}
+          <div className="singleService--Content">
+            {thumbnail && <Image src={thumbnail} alt={thumbnail.publicURL} />}
+            Download: {console.log(manual_pdf)}
+            <Link to={link}>ff {link}</Link>
+            {slider && (
+              <div className="SingleService--Slider">
+                {slider.map((item, intex) => {
+                  const image = item.sliderImage
+                  return (
+                    <figure>
+                      <Image src={image} alt={image.publicURL} />
+                    </figure>
+                  )
+                })}
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  </article>
-)
+    </article>
+  )
+}
 
 // Export Default SingleService for front-end
 const SingleService = ({ data, pathContext }) => {
   const { service } = data
-  console.log(service)
   return (
     <SingleServiceTemplate
       {...service}
