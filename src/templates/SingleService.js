@@ -31,7 +31,7 @@ export const SingleServiceTemplate = ({
       </Helmet>
 
       <div className="container skinny">
-        <Link className="SingleService--BackButton" to="/blog/">
+        <Link className="SingleService--BackButton" to="/services/">
           <ChevronLeft /> BACK
         </Link>
         <div className="SingleService--Content relative">
