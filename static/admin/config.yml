@@ -364,6 +364,12 @@ collections: # A list of collections the CMS should be able to edit
           format: 'DD MM YYYY',
         }
       - {
+          label: 'Info Message',
+          name: 'infoMessage',
+          widget: 'infoMessage',
+          default: '',
+        }
+      - {
           label: 'Start time',
           name: 'start',
           widget: 'datetime',

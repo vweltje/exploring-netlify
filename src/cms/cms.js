@@ -42,3 +42,15 @@ CMS.registerPreviewTemplate('posts', ({ entry }) => (
 CMS.registerPreviewTemplate('services', ({ entry }) => (
   <SingleServiceTemplate {...entry.toJS().data} />
 ))
+
+/**
+ * Let's say you've created widget and preview components for a custom image
+ * gallery widget in separate files:
+ */
+import InfoMessageWidget from './widget/infoMessage/Widget.js'
+import InfoMessagePreview from './widget/infoMessage/Preview.js'
+
+/**
+ * Register the imported widget:
+ */
+CMS.registerWidget(`infoMessage`, InfoMessageWidget, InfoMessagePreview)
