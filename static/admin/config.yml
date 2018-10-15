@@ -367,8 +367,9 @@ collections: # A list of collections the CMS should be able to edit
           label: 'Info Message',
           name: 'infoMessage',
           widget: 'infoMessage',
-          default: '',
+          required: false,
         }
+      - { label: 'Dropdown', name: 'dropdown', widget: 'dropdown' }
       - {
           label: 'Start time',
           name: 'start',

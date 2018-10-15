@@ -50,7 +50,11 @@ CMS.registerPreviewTemplate('services', ({ entry }) => (
 import InfoMessageWidget from './widget/infoMessage/Widget.js'
 import InfoMessagePreview from './widget/infoMessage/Preview.js'
 
+import DropdownWidget from './widget/dropdown/Widget.js'
+import DropdownPreview from './widget/dropdown/Preview.js'
+
 /**
  * Register the imported widget:
  */
 CMS.registerWidget(`infoMessage`, InfoMessageWidget, InfoMessagePreview)
+CMS.registerWidget(`dropdown`, DropdownWidget, DropdownPreview)
